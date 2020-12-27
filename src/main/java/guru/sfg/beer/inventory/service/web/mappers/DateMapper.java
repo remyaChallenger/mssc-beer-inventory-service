@@ -17,6 +17,7 @@
 
 package guru.sfg.beer.inventory.service.web.mappers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
@@ -27,9 +28,11 @@ import java.time.ZoneOffset;
  * Created by jt on 2019-02-13.
  */
 @Component
+@Slf4j
 public class DateMapper {
 
     public OffsetDateTime asOffsetDateTime(Timestamp ts){
+        log.info("Inside asOffsetDateTime");
         if (ts != null){
             return OffsetDateTime.of(ts.toLocalDateTime().getYear(), ts.toLocalDateTime().getMonthValue(),
                     ts.toLocalDateTime().getDayOfMonth(), ts.toLocalDateTime().getHour(), ts.toLocalDateTime().getMinute(),
